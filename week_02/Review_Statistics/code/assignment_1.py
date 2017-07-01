@@ -15,7 +15,10 @@ def get_mean(lst):
 
     Do not use np.mean().
     """
-    pass
+    if len(lst) == 0:
+        return None
+    else:
+        return float(sum(lst)) / len(lst)    
 
 
 def get_median(lst):
@@ -31,8 +34,15 @@ def get_median(lst):
 
     Do not use np.median().
     """
-    pass
+    l = len(lst)
+    if l == 0:
+        return None
 
+    slst = sorted(lst)
+    if l % 2 == 0:
+       return (float(slst[(l/2) - 1]) + float(slst[(l/2)])) / 2
+    else:
+       return float(slst[(l/2)])
 
 def get_mode(lst):
     """Return the mode of all the values in lst
@@ -47,7 +57,14 @@ def get_mode(lst):
 
     Do not use scs.mode().
     """
-    pass
+    freq = {}
+    for i in lst:
+        if i in freq:
+            freq[i] += 1
+        else:
+            freq[i] = 1
+
+    return max(freq, key=lambda f: freq[f])
 
 
 def get_range(lst):
@@ -61,7 +78,7 @@ def get_range(lst):
     -------
     float, range of the input list
     """
-    pass
+    return float(max(lst)) - float(min(lst))
 
 
 def get_IQR(lst):
@@ -77,7 +94,7 @@ def get_IQR(lst):
 
     Hint: you may use np.percentile
     """
-    pass
+    return (float(np.percentile(lst, 75)) - float(np.percentile(lst, 25)))
 
 
 def remove_outliers(lst):
@@ -92,7 +109,12 @@ def remove_outliers(lst):
     list, sorted lst with any data points 3 interquartile range below Q1
     (25th percentile) or 3 interquartile range above Q3 (75th percentile)
     """
-    pass
+    slst = sorted(lst)
+    three_iqr = 3 * get_IQR(lst)
+    low_boundary = float(np.percentile(lst, 25)) - three_iqr
+    high_boundary = float(np.percentile(lst, 75)) + three_iqr
+
+    return filter(lambda x: x >= low_boundary and x <= high_boundary, slst)
 
 
 def run_check(lst):
