@@ -73,7 +73,7 @@ def get_sem(sample):
     - sem(FLOAT) [Standard Error Mean]
     """
     variance = get_variance(sample, True)
-    
+
     if variance == -1: # Error value
         return -1
     return float(np.sqrt(variance)) / np.sqrt(float(len(sample)))
@@ -86,7 +86,7 @@ if __name__ == '__main__':
     #
     # Assignment, checking functions:
     #
-    print('Population mean from custom function: %d, and from np.mean: %d' %
+    print('Population mean from custom function: %f, and from np.mean: %f' %
         (get_mean(population), np.mean(population)))
 
     print('Selecting %d random elements: %s' % (5, draw_sample(population, 5)))
@@ -97,4 +97,34 @@ if __name__ == '__main__':
         get_variance(one_pct_sample, True))
     print('Standard Error of Mean of 1%% sample of population: %f' %
         get_sem(one_pct_sample))
+    print('-' * 80)
 
+    #
+    # Assignment parts 2 to 4
+    #
+
+    # Part 2
+    sample_100 = draw_sample(population, 100)
+    sample_1000 = draw_sample(population, 1000)
+
+    # Part 3
+    sem_100 = get_sem(sample_100)
+    sem_1000 = get_sem(sample_1000)
+    print('Standard Error of Mean of 100 sample of population: %f' % sem_100)
+    print('Standard Error of Mean of 1000 sample of population: %f' % sem_1000)
+
+    print('Population mean from custom function: %f, and from np.mean: %f' %
+        (get_mean(population), np.mean(population)))
+    print("Sample mean of 100-sample: %f" % get_mean(sample_100))
+    print("Sample mean of 1000-sample: %f" % get_mean(sample_1000))
+
+    print("Variance of population: %f" % get_variance(population))
+    variance_100 = get_variance(sample_100)
+    print("Variance of 100-sample: %f" % variance_100)
+    variance_1000 = get_variance(sample_1000)
+    print("Variance of 1000-sample: %f" % variance_1000)
+    print("Variance pcf difference: %f" % (
+        ((variance_1000 - variance_100) * 100) / variance_1000))
+
+    # Part 4
+    print("Sem pct difference: %f" % (((sem_1000 - sem_100) * 100) / sem_1000))

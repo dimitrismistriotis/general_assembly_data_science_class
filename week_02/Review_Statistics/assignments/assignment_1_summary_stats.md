@@ -26,20 +26,27 @@ Brief recap: notice the `if __name__ == '__main__':` block in the `.py` file. Th
 
   Which summary metric would you choose to best describe datasets 1 to 3?
 
-  YOUR ANSWER:
+  YOUR ANSWER: Median
 
-  YOUR EXPLANATION:
+  YOUR EXPLANATION: So that I could get a feeling on where prices are about.
+  I have a feeling that car prices would have many outliers both in the top
+  of the market (ultra expensive custom-made) as well as in the bottom (cars
+  that can be used for parts/scrap).
 
 2. Range vs interquartile range
   Fill in the functions `get_range`, `get_IQR`, and `remove_outliers` in [assignment_1.py](../code/assignment_1.py). Look up how to use `np.percentile`.
 
   How are range and interquartile range similar? How are they different?
 
-  YOUR ANSWER:
+  YOUR ANSWER: Interquartile range would remove the outliers and maybe some
+  high and low variables. Range has more information but is sensitive to
+  very high and very low values.
 
   If there are outliers in your dataset, how do you decide if you are going to ignore them or keep them in your analysis?
 
-  YOUR ANSWER:
+  YOUR ANSWER: Intuition and needs of the problem? How many are they? How far
+  away from the "body" data-set? Could they be partly because of chance or
+  errors in measurement?
 
 _______________________________________
 ## Extra resources

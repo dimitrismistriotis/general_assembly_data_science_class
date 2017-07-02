@@ -51,6 +51,8 @@ _______________________________________
 
     YOUR ANSWER:
 
+    Approx: 12%
+
 3. Define and calculate the variables `sem_100` and `sem_1000` by applying `get_sem` to the 100
 sample and 1000 sample. Print the values.
 
@@ -59,9 +61,17 @@ sample and 1000 sample. Print the values.
 
     YOUR ANSWER:
 
+    Approx: 192%
+
+    Standard Error of Mean of 100 sample of population: 0.372559
+    Standard Error of Mean of 1000 sample of population: 0.982722
+
     - What information the SEM tells us that the variance does not?
 
-    YOUR ANSWER:
+    YOUR ANSWER: *The standard error of the mean (SEM) can be seen to depict the
+    relationship between the dispersion of individual observations around the
+    population mean* (Wikipedia); SEM gives us information about the population
+    while variance is "about" the sample.
 
 _______________________________________
 ## Extra resources
