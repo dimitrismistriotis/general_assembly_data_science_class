@@ -76,7 +76,7 @@ def get_sem(sample):
 
     if variance == -1: # Error value
         return -1
-    return float(np.sqrt(variance)) / np.sqrt(float(len(sample)))
+    return float(np.sqrt(variance)) / np.sqrt(float(len(sample) - 1))
 
 
 if __name__ == '__main__':
