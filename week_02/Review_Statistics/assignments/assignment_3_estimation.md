@@ -46,28 +46,32 @@ Print the variables.
     - Does the confidence intervals include the population mean? Can you explain
     why that is?
 
-    YOUR ANSWER:
+    YOUR ANSWER: In my case it does.
 
-    YOUR EXPLANATION:
+    YOUR EXPLANATION: From the definition of the confidence interval: if
+    we sample a number of samples 95% of them will have their mean within
+    the calculated CI range. We are within that 95%.
 
 3. Modifying function arguments:
     - Try lowering the confidence to `.70` instead of `.95`. What does it do to the range of the confidence interval?
 
-    YOUR ANSWER:
+    YOUR ANSWER: Smaller range
 
-    YOUR EXPLANATION:
+    YOUR EXPLANATION: Now we are less confident on a more narrow range.
 
     - Try increasing the sample size. What does it do to the range of the confidence interval?
 
-    YOUR ANSWER:
+    YOUR ANSWER: Narrows it
 
-    YOUR EXPLANATION:
+    YOUR EXPLANATION: Sqrt of n in the denominator or more data
+    brings us closer to the real value.
 
 4. Assumptions: What assumption are we making about the distribution of the population when we apply the confidence interval? Why are we able to make this assumption here without visualizing any plot?
 
-    YOUR ANSWER:
+    YOUR ANSWER: That the population mean follows a normal distribution.
 
-    YOUR EXPLANATION:
+    YOUR EXPLANATION: As far as I remember from reading but not certain,
+    Central Limit Theorem ensures that.
 
 _______________________________________
 ## Extra resources

@@ -22,7 +22,17 @@ def get_confidence_interval(sample, confidence=.95):
 
     Hint: use scs.t.ppf(percentile)
     """
-    pass
+    if confidence < 0 or confidence > 1:
+        return None
+
+    t_a_div_2_parameter = ((1 - confidence) / 2) + confidence
+    t_value = scs.t.ppf(t_a_div_2_parameter, len(sample))
+    sem = get_sem(sample)
+    margin_error = t_value * sem
+
+    sample_mean = get_mean(sample)
+
+    return (sample_mean - margin_error, sample_mean + margin_error)
 
 
 if __name__ == '__main__':
@@ -60,3 +70,12 @@ if __name__ == '__main__':
     print 'Sample 100 mean ci, alpha .7', ci_100_seventy
     print 'Sample 1000 mean ci, alpha .7', ci_1000_seventy
     print '*' * 20
+
+    #
+    # Assignment question 3
+    #
+    sample_2000 = draw_sample(population, 2000)
+    ci_2000 = get_confidence_interval(sample_2000)
+    print '-' * 20
+    print 'Sample 1000 mean ci, alpha .95', ci_2000
+    print '-' * 20
