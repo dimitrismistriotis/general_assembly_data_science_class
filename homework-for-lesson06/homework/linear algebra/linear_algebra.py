@@ -17,7 +17,7 @@ def one():
     >>> print answer
     >>> [[ 0  1  2  3  4 ... 99 ]]
     '''
-    return None
+    return np.array(range(0,100))
 
 
 
@@ -38,7 +38,10 @@ def two():
          ...
           [ 50.        ]]
     '''
-    return None
+    #
+    # Last one is 49.5 though...
+    #
+    return o.reshape(100,1) / 2.0
 
 
 
@@ -60,7 +63,7 @@ def three():
          [24 25 26 27 28 29]
          [30 31 32 33 34 35]]
     '''
-    return None
+    return np.array(range(0,36)).reshape(6,6)
 
 
 
@@ -79,7 +82,7 @@ def four():
     >>> [[7 8 2]
          [9 4 3]]
     '''
-    return None
+    return np.random.choice(10, 6).reshape(2, 3)
 
 
 
@@ -100,7 +103,7 @@ def five():
          [ 0.  0.  0.  0.  1.  0.]
          [ 0.  0.  0.  0.  0.  1.]]
     '''
-    return None
+    return np.identity(6)
 
 
 
@@ -121,7 +124,7 @@ def six():
           [80 81 82 83 84 85 86 87 88 89]
           [90 91 92 93 94 95 96 97 98 99]]
     '''
-    return None
+    return one().reshape(10, 10)
 
 
 
@@ -147,8 +150,8 @@ def seven():
          [80 81 82]
          [90 91 92]]
     '''
-
-    return None
+    M = six()
+    return M[:, 0:3]
 
 
 
@@ -163,7 +166,8 @@ def eight():
     >>> [[80 81 82 83 84 85 86 87 88 89]
          [90 91 92 93 94 95 96 97 98 99]]
     '''
-    return None
+    M = six()
+    return M[-2:]
 
 
 
@@ -178,7 +182,8 @@ def nine():
 
     Create this numpy array (called V): [ [0,1,2,3,4,5,6,7,8,9] ]
     '''
-    return None
+    V = np.array([np.array(range(0, 10))])
+    return V
 
 
 
@@ -190,7 +195,8 @@ def ten(V):
 
     Do a scalar addition by 0.5 to V.
     '''
-    return None
+    V = nine()
+    return V * 0.5
 
 
 
@@ -200,7 +206,8 @@ def eleven(V):
     Do a scalar multiple by -2.
     OUTPUT:  [[  0  -2  -4  -6  -8 -10 -12 -14 -16 -18]]
     '''
-    return None
+    V = nine()
+    return V * (-2)
 
 
 def twelve(V):
@@ -214,7 +221,9 @@ def twelve(V):
 
     Return your answer
     '''
-    return None
+    V = nine()
+    B = np.array([0.5]* 10)
+    return B + V
 
 
 # PART 3: MATRIX / VECTOR Multiplication
@@ -226,7 +235,7 @@ def thirteen():
     Create 3 x 3 square matrix called and square_matrix:
     Return as column_vector, row_vector, square_matrix (IN THAT ORDER)
     '''
-    return None, None, None
+    return np.array([5,6,7]).reshape(3, 1), np.array([5,6,7]), np.random.choice(10, 9).reshape(3, 3)
 
 
 
@@ -240,8 +249,8 @@ def fourteen(column_vector, row_vector):
     Say column_vector is a 2 x 1 and row_vector is a 1 x 3, output will be a 2 x 3 matrix.
 
     '''
-
-    return None
+    c, r, _ = thirteen()
+    return c * r
 
 
 
@@ -262,8 +271,11 @@ def fifteen(column_vector, row_vector, square_matrix):
     Make sure you return c_answer first
     return c_answer, r_answer
     '''
-
-    return None, None
+    c, r, m = thirteen()
+    
+    c_answer = c * m
+    r_answer = m * r
+    return c_answer, r_answer
 
 
 
@@ -271,7 +283,8 @@ def sixteen(column_vector, row_vector):
     '''
     Compute the dot product of row_vector and column_vector.
     '''
-    return None
+    c, r, _ = thirteen()
+    return r.dot(c)
 
 
 
@@ -300,8 +313,10 @@ def seventeen():
             answer_three BOOLEAN,
             answer_four Tuple or None
     '''
+    A = np.array(range(0, 6)).reshape(3, 2)
 
-    return None, None, None, None
+    B = np.array(range(0, 12)).reshape(4, 3)
+    return False, None, True, np.dot(B, A)
 
 
 def eighteen():
@@ -313,7 +328,8 @@ def eighteen():
     OUTPUT: answer_one  NUMPY MATRIX
 
     '''
-    return None
+    rand_matrix = np.random.choice(30, 18).reshape(3, 6)
+    return rand_matrix.dot(rand_matrix.reshape(6, 3))
 
 
 
@@ -333,7 +349,9 @@ def nineteen():
     OUTPUT: answer_square, answer_add, answer_subtract, answer_multiply,
             answer_divide
     '''
-    return None, None, None, None, None
+    a = np.random.choice(30, 12).reshape(6, 2)
+    b = np.random.choice(30, 12).reshape(6, 2)
+    return (a * a), (a + b), (a - b), (a * b), (a / b)
 
 
 def twenty():
@@ -348,7 +366,9 @@ def twenty():
     answer = use numpy to add Matrix A to Matrix B
     return answer
     '''
-    return None
+    A = np.array([ [1], [2], [3], [4] ])
+    B = np.array([[ 100.0,  200.0,   300.0]])
+    return A + B
 
 
 
@@ -370,7 +390,7 @@ def twenty_one():
          [ 80.  81.  82.  83.  84.  85.  86.  87.  88.  89.]
          [ 90.  91.  92.  93.  94.  95.  96.  97.  98.  99.]]
     '''
-    return None
+    return np.linspace(0, 99, num=100, endpoint=True).reshape(10, 10)
 
 
 
@@ -383,7 +403,11 @@ def twenty_two(M):
     Example:
     M_sum = 4950.0
     '''
-    return None, None, None
+    M = twenty_one()
+    M_sum = np.sum(M)
+    M_mean = np.mean(M)
+    M_std = np.std(M)
+    return M_sum, M_mean, M_std
 
 
 
@@ -397,7 +421,11 @@ def twenty_three(M):
     Example
     col_sum = [ 460.  470.  480.  490.  500.  510.  520.  530.  540.  550.]
     '''
-    return None, None, None
+    M = twenty_one()
+    col_sum = np.sum(M, axis=1)
+    col_mean = np.mean(M, axis=1)
+    col_std = np.std(M, axis=1)
+    return col_sum, col_mean, col_std
 
 
 
@@ -411,4 +439,10 @@ def twenty_four(M):
     Example:
     row_sum = [  55.  155.  255.  355.  455.  555.  655.  755.  855.  955.]
     '''
-    return None, None, None
+    M = twenty_one()
+    row_sum = np.sum(M, axis=0)
+    row_mean = np.mean(M, axis=0)
+    row_std = np.std(M, axis=0)
+    return row_sum, row_mean, row_std
+
+
